@@ -8,8 +8,7 @@ def index():
     return {'data': {'name': 'Sarthak'}}
 
 @app.get('/blog')
-def index(limit, published:bool):
-    return published
+def index(limit, published):
     if published:
         return {'data': f'{limit} published blogs from the db'}
     else:
