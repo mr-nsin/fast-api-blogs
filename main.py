@@ -1,7 +1,14 @@
 from fastapi import FastAPI
 from typing import Optional
+from pydantic import BaseModel
+
 app = FastAPI()
 
+class Blog(BaseModel):
+    author: str
+    title: str
+    body: str
+    published: Optional[str]
 
 @app.get("/")
 def index():
@@ -30,6 +37,11 @@ def show(id: int):
 @app.get('/blog/{id}/comments')
 def comments(id, limit=10):
     return {'data': {'1', '2'}}
+
+
+@app.post('/blog')
+def create_blog(request: Blog):
+    return request
 
 if __name__=="__main__":
     import uvicorn
