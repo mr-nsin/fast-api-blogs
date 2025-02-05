@@ -27,7 +27,9 @@ def show(id: int):
     print(type(id))
     return {'data': id}
 
-
+@app.get('/blog/{id}/comments')
+def comments(id, limit=10):
+    return {'data': {'1', '2'}}
 
 if __name__=="__main__":
     import uvicorn
