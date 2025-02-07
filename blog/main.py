@@ -74,6 +74,7 @@ def get_user(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with id {id} is not available") 
     return user
 
+
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run(app="main:app", port=9000, reload=True )
