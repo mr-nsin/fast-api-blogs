@@ -1,9 +1,8 @@
 from typing import List
-from fastapi import APIRouter, Depends, Response, status, HTTPException
+from fastapi import APIRouter, Depends, status
 from schemas import ShowBlog, Blog, BlogUpdate
 from sqlalchemy.orm import Session
 from database import get_db
-import models
 from repository import blog
 
 router = APIRouter(prefix='/blog', tags=['Blogs'])
@@ -30,5 +29,4 @@ def delete(id: int, db: Session = Depends(get_db)):
 
 @router.put('/{id}', status_code=status.HTTP_202_ACCEPTED)
 def update(id: int, request: BlogUpdate, db: Session = Depends(get_db)):
-    return blog.update_one(id, request, db)
-    
+    return blog.update_one(id, request, db)     
